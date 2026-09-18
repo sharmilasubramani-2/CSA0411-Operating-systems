@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+ FILE *source, *destination;
+ char buffer[100];
+
+ source = fopen("source.txt", "w");
+ fprintf(source, "Operating Systems Lab");
+ fclose(source);
+
+ source = fopen("source.txt", "r");
+ destination = fopen("destination.txt", "w");
+
+ while (fgets(buffer, sizeof(buffer), source) != NULL)
+ {
+ fputs(buffer, destination);
+ }
+ fclose(source);
+ fclose(destination);
+printf("File copied successfully.\n");
+return 0;}
